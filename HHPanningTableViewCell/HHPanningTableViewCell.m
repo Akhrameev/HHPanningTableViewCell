@@ -562,8 +562,12 @@ static HHPanningTableViewCellDirection HHOppositeDirection(HHPanningTableViewCel
         containerFrame.size.width = cellBounds.size.width;
 
 		if (self.drawerRevealed) {
-			if (containerFrame.origin.x > cellBounds.origin.x) {
-				containerFrame.origin.x = cellBounds.origin.x + cellBounds.size.width;
+			if (containerFrame.origin.x > cellBounds.origin.x) 
+			{
+				if (self.revealDistance <= 0.0f)
+                    			containerFrame.origin.x = cellBounds.origin.x + cellBounds.size.width;
+                		else
+                    			containerFrame.origin.x = cellBounds.origin.x + self.revealDistance;
 			}
 			else {
 				containerFrame.origin.x = cellBounds.origin.x - cellBounds.size.width;
